@@ -217,7 +217,8 @@ func (p *P2pServer) connectBootstrap() error {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			if err := p.host.Connect(p.ctx, *peerInfo); err != nil {
+			ctx, _ := context.WithTimeout(p.ctx, time.Second*60)
+			if err := p.host.Connect(ctx, *peerInfo); err != nil {
 				log.Warn("Connection established with bootstrap node", "error", err)
 			} else {
 				p.peerIsLive(peerInfo.ID)

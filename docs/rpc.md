@@ -21,20 +21,16 @@ gc = NewGreeterClient(conn)
 
 ### GetAccount
 - info：获取账户信息
-- agrs：address(json bytes)
-```json
-["Ubc1Xk1h8m2GfUqERwWnj1v3G25uNFGfTeo"]
-```
 - result:
     
 ```json
 {
-    "address": "Ubc1Xk1h8m2GfUqERwWnj1v3G25uNFGfTeo",
+    "address": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv",
     "nonce": 0,
     "time": 0,
     "coins": [
         {
-            "contract": "UBC",
+            "contract": "UWD",
             "balance": 3045.0003,
             "lockedout": 3,
             "lockedin": 0
@@ -48,14 +44,9 @@ gc = NewGreeterClient(conn)
 
 ### SendTransaction
 - info：发送消息
-- agrs：[RpcTransaction(json bytes)](https://github.com/jhdriver/UWORLD/blob/master/rpc/rpctypes/rpctransaction.go)
 
 ### GetTransaction
 - info：获取消息
-- agrs：txhash(json bytes)
-```json
-["0xbc7c8d4fa7d24915aa877f33a6a3801437df7d209d27528945b4a51488135b9e"]
-```
 - result:
     
 ```json
@@ -75,20 +66,14 @@ gc = NewGreeterClient(conn)
     },
     "normalbody": {
         "contract": "UBC",
-        "to": "UbGJeqZUWYT69JroJ5if3kQ2U4W4Wh56RZJ",
+        "to": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv",
         "amount": 300000000
     },
-    "contractbody": null,
-    "loginbody": null
 }
 ```
 
 ### GetBlockByHash
 - info：获取block
-- agrs：blockhash(json bytes)
-```json
-["0xcf7e0229a8c89c01ef185d3bd874267540d79cb9c4d6882d1cdadfeab03ec585"]
-```
 - result:
     
 ```json
@@ -103,7 +88,7 @@ gc = NewGreeterClient(conn)
         "height": 10,
         "time": "2020-08-11T15:23:45+08:00",
         "term": 0,
-        "signer": "UbGJeqZUWYT69JroJ5if3kQ2U4W4Wh56RZJ"
+        "signer": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv"
     },
     "body": {
         "transactions": [
@@ -122,12 +107,10 @@ gc = NewGreeterClient(conn)
                     }
                 },
                 "normalbody": {
-                    "contract": "UBC",
-                    "to": "UbGJeqZUWYT69JroJ5if3kQ2U4W4Wh56RZJ",
+                    "contract": "UWD",
+                    "to": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv",
                     "amount": 300000000
                 },
-                "contractbody": null,
-                "loginbody": null
             }
         ]
     },
@@ -136,10 +119,6 @@ gc = NewGreeterClient(conn)
 ```
 ### GetBlockHeight
 - info：获取block
-- agrs：blockheight(json bytes)
-```json
-[10]
-```
 - result:
     
 ```json
@@ -154,7 +133,7 @@ gc = NewGreeterClient(conn)
         "height": 10,
         "time": "2020-08-11T15:23:45+08:00",
         "term": 0,
-        "signer": "UbGJeqZUWYT69JroJ5if3kQ2U4W4Wh56RZJ"
+        "signer": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv"
     },
     "body": {
         "transactions": [
@@ -173,12 +152,10 @@ gc = NewGreeterClient(conn)
                     }
                 },
                 "normalbody": {
-                    "contract": "UBC",
-                    "to": "UbGJeqZUWYT69JroJ5if3kQ2U4W4Wh56RZJ",
+                    "contract": "UWD",
+                    "to": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv",
                     "amount": 300000000
                 },
-                "contractbody": null,
-                "loginbody": null
             }
         ]
     },
@@ -188,17 +165,14 @@ gc = NewGreeterClient(conn)
 
 ### GetLastHeight
 - info：获取最高高度
-- agrs：无
 - result: 高度(string bytes)
 
 ### GetConfirmedHeight
 - info：获取已经确认的最高区块高度
-- agrs：无
 - result: 高度(string bytes)
 
 ### GetPoolTxs
 - info：获取交易池
-- agrs：无
 - result: 高度(string bytes)
 ```json
 {
@@ -210,7 +184,7 @@ gc = NewGreeterClient(conn)
             "txhead": {
                 "txhash": "0x786315263b74fef17b227cb74b940cae456deb33d034fda3f3170a82abfe17b5",
                 "txtype": 0,
-                "from": "UbQbRaPtcBgsU1M251MTXt7jP3idNEyVnx4",
+                "from": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv",
                 "nonce": 3,
                 "fees": 100000,
                 "time": 1597730820,
@@ -221,12 +195,10 @@ gc = NewGreeterClient(conn)
                 }
             },
             "normalbody": {
-                "contract": "UBC",
-                "to": "UbQbRaPtcBgsU1M251MTXt7jP3idNEyVnx4",
+                "contract": "UWD",
+                "to": "UWDKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv",
                 "amount": 2000000000
-            },
-            "contractbody": null,
-            "loginbody": null
+            }
         }
     ],
     "futuretxs": null
@@ -235,11 +207,10 @@ gc = NewGreeterClient(conn)
 
 ### GetContract
 - info：获取contract详情
-- agrs：token地址(string bytes)
 - result:
 ```json
 {
-    "contract": "UtpuFryDEPGLdYmitofgctYW214AsstWrfG",
+    "contract": "UWTKoLj4mRTKr4SjyyFG4LY3ExZVSZT9dNZv",
     "name": "Test Coin",
     "abbr": "TCC",
     "increase": false,
@@ -256,12 +227,11 @@ gc = NewGreeterClient(conn)
 
 ### Peers
 - info：获取p2p节点信息
-- agrs：无
 - result:
 ```json
 [
     {
-        "version": "v3.0.1",
+        "version": "v0.3.1",
         "net": "TN",
         "p2pid": "16Uiu2HAm4Wqt9qQbvBAUqfvzV52W5Eett3yzX3ujhzBqxmDXbe7R",
         "p2pAddr": "[/ip4/47.57.100.253/tcp/28000][/ip4/172.31.244.159/tcp/28000]",
@@ -273,11 +243,10 @@ gc = NewGreeterClient(conn)
 ```
 ### NodeInfo
 - info：获取本地节点信息
-- agrs：无
 - result:
 ```json
 {
-    "version": "v3.0.1",
+    "version": "v0.3.1",
     "net": "TN",
     "p2pid": "16Uiu2HAkxQruPEeNsC5adX5PJ66rzZkYreM5q76utx8doQ2Kcrfd",
     "p2pAddr": "[/ip4/0.0.0.0/tcp/30000][/ip4/192.168.31.140/tcp/30000]",

@@ -30,17 +30,17 @@ addr, _ := ut.GenerateUWDAddress(param.TestNet, key.PubKey())
 
 ### 校验地址
 ```
-ut.CheckUWDAddress(param.TestNet, hasharry.StringToAddress("UbQQhJ4zmp4wLQ4Li6tm7zigopaeGrWxSvy"))
+ut.CheckUWDAddress(param.TestNet, "UbQQhJ4zmp4wLQ4Li6tm7zigopaeGrWxSvy")
 ```
 
 ### 生成token地址
 
 ```
-ut.GenerateTokenAddress(param.TestNet, hasharry.StringToAddress("UbQQhJ4zmp4wLQ4Li6tm7zigopaeGrWxSvy"), "HFC")
+ut.GenerateTokenAddress(param.TestNet, "UbQQhJ4zmp4wLQ4Li6tm7zigopaeGrWxSvy", "HFC")
 ```
 
 ### 校验token地址
 
 ```
-ut.CheckTokenAddress(param.TestNet, hasharry.StringToAddress("UbQQhJ4zmp4wLQ4Li6tm7zigopaeGrWxSvy"))
+ut.CheckTokenAddress(param.TestNet, "UbQQhJ4zmp4wLQ4Li6tm7zigopaeGrWxSvy")
 ```
