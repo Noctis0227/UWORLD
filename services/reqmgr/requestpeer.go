@@ -6,6 +6,7 @@ import (
 	"github.com/uworldao/UWORLD/common/encode/rlp"
 	"github.com/uworldao/UWORLD/common/hasharry"
 	"github.com/uworldao/UWORLD/core/types"
+	log "github.com/uworldao/UWORLD/log/log15"
 	"github.com/uworldao/UWORLD/p2p"
 	"strconv"
 	"time"
@@ -208,6 +209,8 @@ func (rm *RequestManager) SendTransaction(stream *p2p.StreamCreator, tx types.IT
 		s.Close()
 	}()
 
+	log.Info("Send transaction to peer", "tx", tx.Hash(), "peer", s.Conn().RemoteMultiaddr().String())
+
 	s.SetDeadline(time.Unix(time.Now().Unix()+readTimeOut, 0))
 	bytes, err := rlp.EncodeToBytes(tx.TranslateToRlpTransaction())
 	if err != nil {
@@ -219,8 +222,17 @@ func (rm *RequestManager) SendTransaction(stream *p2p.StreamCreator, tx types.IT
 		return err
 	}
 	response, err := rm.ReadResponse(s)
-	if response != nil && response.Code != Success {
-		return errors.New("send transaction failed")
+	if response != nil && response.Code == Success {
+		return nil
+	} else {
+		if response != nil {
+			log.Warn("Failed Send Transaction to peer", "tx", tx.Hash(), "peer", s.Conn().RemoteMultiaddr().String(),
+				"error", response.Message)
+		} else if err != nil {
+			log.Warn("Failed Send Transaction to peer", "tx", tx.Hash(), "peer", s.Conn().RemoteMultiaddr().String(),
+				"error", err.Error())
+		}
+
 	}
 	return nil
 }

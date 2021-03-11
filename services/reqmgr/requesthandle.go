@@ -6,6 +6,7 @@ import (
 	"github.com/uworldao/UWORLD/common/encode/rlp"
 	"github.com/uworldao/UWORLD/common/hasharry"
 	"github.com/uworldao/UWORLD/core/types"
+	log "github.com/uworldao/UWORLD/log/log15"
 	"strconv"
 )
 
@@ -171,6 +172,7 @@ func (rm *RequestManager) receivedTransaction(request *RWRequest) (*Response, er
 		code = InternalError
 		message = "failed to decode"
 	} else {
+		log.Info("RequestManager received transaction", "from", request.stream.Conn().RemoteMultiaddr().String())
 		rm.recTx <- tx.TranslateToTransaction()
 	}
 	response := NewResponse(code, message, body)

@@ -237,12 +237,12 @@ func (blc *BlockChain) saveBlock(block *types.Block) error {
 	blc.currentHeight = block.Height
 	blc.storage.UpdateLastHeight(block.Height)
 
-	log.Info("Save block", "height", block.Height, "hash", block.HashString(),
-		"state root", block.StateRoot.String(),
-		"contract root", block.ContractRoot.String(),
-		"consensus root", block.ConsensusRoot.String(),
-		"signer", block.Signer.String(), "txcount", block.Transactions.Len(),
-		"time", block.Time, "term", block.Term)
+	/*log.Info("Save block", "height", block.Height, "hash", block.HashString(),
+	"state root", block.StateRoot.String(),
+	"contract root", block.ContractRoot.String(),
+	"consensus root", block.ConsensusRoot.String(),
+	"signer", block.Signer.String(), "txcount", block.Transactions.Len(),
+	"time", block.Time, "term", block.Term)*/
 	return nil
 }
 

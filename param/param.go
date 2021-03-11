@@ -50,7 +50,7 @@ const (
 	CoinBaseCoins = 3 * AtomsPerCoin
 
 	//MaxAddressTxs is address the maximum number of transactions in the trading pool
-	MaxAddressTxs = 500
+	MaxAddressTxs = 1000
 
 	// MinFeesCoefficient is minimum fee required to process the transaction
 	MinFeesCoefficient uint64 = 1e4

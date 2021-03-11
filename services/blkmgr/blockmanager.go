@@ -2,6 +2,7 @@ package blkmgr
 
 import (
 	"errors"
+	"fmt"
 	"github.com/libp2p/go-libp2p-core/network"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/uworldao/UWORLD/consensus"
@@ -186,7 +187,15 @@ func (bm *BlockManager) syncBlockFromStream() error {
 }
 
 func (bm *BlockManager) insertBlocksToChain(blocks []*types.Block) error {
-	for _, block := range blocks {
+	var start, end uint64
+	defer func() {
+		log.Info("Sync blocks", "blocks", fmt.Sprintf("%d-%d", start, end), "peer", bm.syncPeer.AddrInfo.String())
+	}()
+
+	for i, block := range blocks {
+		if i == 0 {
+			start = block.Height
+		}
 		select {
 		case _, _ = <-bm.quitCh:
 			log.Info("Insert blocks quit")
@@ -208,7 +217,9 @@ func (bm *BlockManager) insertBlocksToChain(blocks []*types.Block) error {
 				return err
 			}
 		}
+		end = block.Height
 	}
+
 	return nil
 }
 

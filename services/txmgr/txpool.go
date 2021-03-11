@@ -21,7 +21,7 @@ const monitorTxInterval = 20
 const txChanLength = 50
 
 // Maximum number of transactions in the transaction pool
-const maxPoolTx = 5000
+const maxPoolTx = 50000
 
 const txPoolStorage = "txpool"
 
@@ -127,6 +127,7 @@ func (tp *TxPool) Add(tx types.ITransaction, isPeer bool) error {
 
 // Verify adding transactions to the transaction pool
 func (tp *TxPool) AddTransaction(tx types.ITransaction, isPeer bool) error {
+	log.Info("TxPool receive transaction", "hash", tx.Hash())
 	if tp.IsExist(tx) {
 		return errors.New("the transaction already exists")
 	}
@@ -142,10 +143,10 @@ func (tp *TxPool) AddTransaction(tx types.ITransaction, isPeer bool) error {
 	if err := tp.txs.Put(tx); err != nil {
 		return err
 	}
-	log.Info("TxPool receive transaction", "hash", tx.Hash())
-	if !isPeer {
-		tp.txChan <- tx
-	}
+	log.Info("TxPool put transaction", "hash", tx.Hash())
+	//if !isPeer {
+	tp.txChan <- tx
+	//}
 	return nil
 }
 
