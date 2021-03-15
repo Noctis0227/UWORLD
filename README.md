@@ -87,7 +87,6 @@ cp wallet.toml.example wallet.toml
     
 ## Documents
 
-
 - [RPC](https://github.com/uworldao/UWORLD/tree/master/docs/rpc.md)
 - [Address](https://github.com/uworldao/UWORLD/tree/master/docs/address.md)
 - [Transaction](https://github.com/uworldao/UWORLD/tree/master/docs/transaction.md)
